@@ -52,6 +52,28 @@
                 this.$buttons.show();
             }
         }
+        
+        if (this.options.pager) {
+            
+            this.$pager = $('<div class="pager"></div>');
+            
+            this.$container.append(this.$pager);
+            
+            this.$slides.each($.proxy(function(index, element){
+                var $link = $('<a href=""></a>');
+                $link.data('slideIndex', index);
+                
+                $link.click($.proxy(function(e){
+                    var index = $(e.target).data('slideIndex');
+                    this.slideTo(this.$slides.eq(index));
+                    
+                    return false;
+                }, this));
+                
+                this.$pager.append($link);
+            }, this));
+            
+        }
     }
     
     Slideshow.prototype = {
@@ -89,6 +111,13 @@
             $slide.addClass('active');
 
             this.$current = $slide;
+            
+            if (this.options.pager) {
+                var index = this.$slides.index($slide);
+                var $pagerLink = this.$pager.children().eq(index);
+                $pagerLink.addClass('active');
+                $pagerLink.siblings().removeClass('active');
+            }
 
             return this;                
         },
@@ -128,7 +157,8 @@
             autoStart :         true,
             controls:           true,
             fadeControls:       true,
-            pauseOnHover:       false
+            pauseOnHover:       false,
+            pager:              true
         }, options);
         
         this.each(function(){

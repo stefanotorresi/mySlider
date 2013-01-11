@@ -60,7 +60,8 @@ They are quite self explanatory:
     autoStart:          true,
     controls:           true,
     fadeControls:       true,
-    pauseOnHover:       false
+    pauseOnHover:       false,
+    pager:              true
 }
 ```
 

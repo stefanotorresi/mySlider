@@ -85,3 +85,30 @@ you shouldn't need to change anything below */
     right: 20px;
     background: url('slider-next.png') no-repeat;
 }
+
+.slideshow .pager {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.slideshow .pager a {
+    display: inline-block;
+    margin: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.7);
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2FFFFFF,endColorstr=#B2FFFFFF);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2FFFFFF,endColorstr=#B2FFFFFF);
+    zoom: 1;
+}
+
+.slideshow .pager a:hover,
+.slideshow .pager a.active {
+    background: rgba(77,77,77,0.7);
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B24D4D4D,endColorstr=#B24D4D4D);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B24D4D4D,endColorstr=#B24D4D4D);
+}
