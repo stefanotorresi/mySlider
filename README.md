@@ -14,7 +14,7 @@ Requirements
 Usage
 ---
 
-### Html
+### HTML
 
 1. Add `slideshow-container` class to the block you want to add the background to.
 2. Append a child with `slideshow` class to the block.
@@ -61,6 +61,30 @@ They are quite self explanatory:
     controls:           true
 }
 ```
+
+### CSS
+
+To prevent FOUC and grant graceful degradation just set your image size using these three rules somewhere in your css. Here is an example for 2000x670 images:
+
+```css
+/* WIDTH */
+.slideshow .slide img {
+    width: 2000px;
+    margin-left: -1000px;  /* minus half width , needed to center the image */
+}
+
+/* HEIGHT */
+.slideshow-container, 
+.slideshow,
+.slideshow .slide,
+.slideshow .slide img {
+    height: 670px;
+}
+```
+
+### Examples
+
+   http://www.fudcatania.it
 
 Copyright and license
 --
