@@ -15,8 +15,19 @@
         this.$slides = this.$container.children(this.options.slideSelector);
         this.$current = this.$slides.first();
         
+        if (this.options.autoStart) {
+            this.play();
+        }
+        
+        if (this.options.pauseOnHover) {  
+            this.$container.on('mouseenter', $.proxy(this.pause, this) );
+            this.$container.on('mouseleave', $.proxy(this.play, this) );
+        }
+        
         if (this.options.controls) {
+            
             this.$container.append('<div class="buttons"><a class="prev" href="">prev</a><a class="next" href="">next</a></div>');
+            
         
             this.$container.find('.buttons .next').click($.proxy(function(e){
                 this.next();
@@ -33,6 +44,7 @@
     Slideshow.prototype = {
         
         play : function () {
+            
             this.cycling = true;
 
             this.interval = setInterval($.proxy(function() { 
@@ -43,6 +55,7 @@
         },
 
         pause: function() {
+            
             clearInterval(this.interval);
             this.interval = null;
 
@@ -100,15 +113,13 @@
             speed :             1000,
             slideSelector :     '.slide',
             autoStart :         true,
-            controls:           true
+            controls:           true,
+            pauseOnHover:       false
         }, options);
         
         this.each(function(){
             var slideshow = new Slideshow(this, options);
             $(this).data('slideshow', slideshow);
-            if (options.autoStart) {
-                slideshow.play();
-            }
         });
         
         return this;

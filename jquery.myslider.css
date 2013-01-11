@@ -57,6 +57,10 @@ you shouldn't need to change anything below */
     top: 0;
 }
 
+.slideshow .buttons {
+    display: none;
+}
+
 .slideshow .buttons a {
     position: absolute;
     z-index: 1;

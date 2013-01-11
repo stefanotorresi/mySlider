@@ -58,7 +58,8 @@ They are quite self explanatory:
     speed:              1000,
     slideSelector:      '.slide',
     autoStart:          true,
-    controls:           true
+    controls:           true,
+    pauseOnHover:       false
 }
 ```
 
