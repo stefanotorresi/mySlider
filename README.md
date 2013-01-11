@@ -39,6 +39,8 @@ Usage
 </div>
 ```
 
+Note: you can use pretty much any tag instead of `<div>`
+
 ### Javascript
 
 Just call the plugin on the `slideshow` element.
@@ -48,24 +50,28 @@ $(".slideshow").mySlider();
 ```
 
 You can pass the classic JSON to `mySlider()` with some options.
-They are quite self explanatory by looking at the defaults:
+They are quite self explanatory:
 
-```json
+```javascript
 {
-	interval :          5000,
-	speed :             1000,
-	slideSelector :     '.slide',
-	autoStart :         true,
-	controls:           true
+    interval:           5000,
+    speed:              1000,
+    slideSelector:      '.slide',
+    autoStart:          true,
+    controls:           true
 }
 ```
 
-LICENSE
+Copyright and license
 --
 
-The files in this archive are released under the MIT license. You can find a copy of this license in LICENSE.txt.
+Copyright 2013 Stefano Torresi
 
-ACKNOWLEDGEMENTS
+Released under the MIT license. You can find a copy of this license in LICENSE.txt at:
+
+   http://opensource.org/licenses/MIT
+
+Credits
 --
 
 Most of the code is inspired by [Twitter Bootstrap's Carousel](http://twitter.github.com/bootstrap/javascript.html#carousel)
