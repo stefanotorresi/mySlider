@@ -4,7 +4,7 @@ mySlider
 Description
 ---
 
-**mySlider** is a jQuery plugin designed to slide through absolutely positioned gargantuan background images inside a fixed height HTML block.
+**mySlider** is yet another jQuery slideshow plugin, designed to slide through absolutely positioned widescreen background images inside a fixed height HTML block.
 
 Requirements
 ---
