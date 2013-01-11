@@ -26,18 +26,31 @@
         
         if (this.options.controls) {
             
-            this.$container.append('<div class="buttons"><a class="prev" href="">prev</a><a class="next" href="">next</a></div>');
+            this.$buttons = $('<div class="buttons"><a class="prev" href="">prev</a><a class="next" href="">next</a></div>');
             
-        
-            this.$container.find('.buttons .next').click($.proxy(function(e){
-                this.next();
-                return false;
-            }, this));
+            this.$container.append(this.$buttons);
 
-            this.$container.find('.buttons .prev').click($.proxy(function(e){
+            this.$buttons.children('.prev').click($.proxy(function(e){
                 this.prev();
                 return false;
             }, this));
+            
+            this.$buttons.children('.next').click($.proxy(function(e){
+                this.next();
+                return false;
+            }, this));
+            
+            if(this.options.fadeControls) {
+                this.$container.on('mouseenter', $.proxy(function() {
+                    this.$buttons.fadeIn('fast');
+                }, this));
+
+                this.$container.on('mouseleave', $.proxy(function() {
+                    this.$buttons.fadeOut('fast');
+                }, this));
+            } else {
+                this.$buttons.show();
+            }
         }
     }
     
@@ -114,6 +127,7 @@
             slideSelector :     '.slide',
             autoStart :         true,
             controls:           true,
+            fadeControls:       true,
             pauseOnHover:       false
         }, options);
         

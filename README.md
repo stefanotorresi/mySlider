@@ -59,6 +59,7 @@ They are quite self explanatory:
     slideSelector:      '.slide',
     autoStart:          true,
     controls:           true,
+    fadeControls:       true,
     pauseOnHover:       false
 }
 ```
