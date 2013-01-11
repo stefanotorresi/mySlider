@@ -30,6 +30,7 @@ you shouldn't need to change anything below */
     overflow: hidden;
     position: relative;
     z-index: 0;
+    display: block;
 }
 
 .slideshow {
@@ -41,6 +42,7 @@ you shouldn't need to change anything below */
     position: absolute;
     top: 0;
     width: 100%;
+    display: block;
 }
 
 .slideshow .slide + .slide {
