@@ -94,7 +94,7 @@ Copyright and license
 
 Copyright 2013 Stefano Torresi
 
-Released under the MIT license. You can find a copy of this license in LICENSE.txt at:
+Released under the MIT license. You can find a copy of this license in LICENSE.txt or at:
 
    http://opensource.org/licenses/MIT
 
