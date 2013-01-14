@@ -63,6 +63,10 @@
                 var $link = $('<a href=""></a>');
                 $link.data('slideIndex', index);
                 
+                if (index == 0) {
+                    $link.addClass('active');
+                }
+                
                 $link.click($.proxy(function(e){
                     var index = $(e.target).data('slideIndex');
                     this.slideTo(this.$slides.eq(index));
