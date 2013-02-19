@@ -49,6 +49,11 @@ you shouldn't need to change anything below */
     display: none;
 }
 
+.csstransitions .slide + .slide {
+    opacity: 0;
+    display: block;
+}
+
 .slideshow .slide img {
     position: absolute;
     left: 50%;
@@ -59,6 +64,11 @@ you shouldn't need to change anything below */
 
 .slideshow .buttons {
     display: none;
+}
+
+.csstransitions .slideshow .buttons {
+    display: block;
+    opacity: 0;
 }
 
 .slideshow .buttons a {

@@ -11,20 +11,19 @@
     var Slideshow = function (container, options) {
         this.$container = $(container);
         this.options = options;
-        this.cycling = false;
-        this.$slides = this.$container.children(this.options.slideSelector);
+        this.$slides = this.$container.children(options.slideSelector);
         this.$current = this.$slides.first();
         
-        if (this.options.autoStart) {
+        if (options.autoStart) {
             this.play();
         }
         
-        if (this.options.pauseOnHover) {  
+        if (options.pauseOnHover) {
             this.$container.on('mouseenter', $.proxy(this.pause, this) );
             this.$container.on('mouseleave', $.proxy(this.play, this) );
         }
         
-        if (this.options.controls) {
+        if (options.controls) {
             
             this.$buttons = $('<div class="buttons"><a class="prev" href="">prev</a><a class="next" href="">next</a></div>');
             
@@ -40,20 +39,36 @@
                 return false;
             }, this));
             
-            if(this.options.fadeControls) {
+            if(options.fadeControls) {
                 this.$container.on('mouseenter', $.proxy(function() {
-                    this.$buttons.fadeIn('fast');
+                    if (this.csstransitions) {
+                        this.$buttons.css('opacity', 1);
+                    } else {
+                        this.$buttons.fadeIn('fast');
+                    }
                 }, this));
 
                 this.$container.on('mouseleave', $.proxy(function() {
-                    this.$buttons.fadeOut('fast');
+                    if (this.csstransitions) {
+                        this.$buttons.css('opacity', 0);
+                    } else {
+                        this.$buttons.fadeOut('fast');
+                    }
                 }, this));
+                
+                if (this.csstransitions) {
+                    this.$buttons.css({
+                        'transition' : 'opacity 200ms',
+                        '-moz-transition': 'opacity 200ms',
+                        '-webkit-transition': 'opacity 200ms'
+                    });
+                }
             } else {
                 this.$buttons.show();
             }
         }
         
-        if (this.options.pager) {
+        if (options.pager) {
             
             this.$pager = $('<div class="pager"></div>');
             
@@ -78,14 +93,22 @@
             }, this));
             
         }
+        
+        if (this.csstransitions) {
+            this.$slides.css('transition', 'opacity '+options.speed+'ms');
+            this.$slides.css('-moz-transition', 'opacity '+options.speed+'ms');
+            this.$slides.css('-webkit-transition', 'opacity '+options.speed+'ms');
+        }
     }
     
     Slideshow.prototype = {
         
+        csstransitions : typeof Modernizr !== 'undefined' && Modernizr.csstransitions,
+        cycling :    false,
+        
         play : function () {
-            
             this.cycling = true;
-
+            
             this.interval = setInterval($.proxy(function() { 
                 this.next();
             }, this), this.options.interval );
@@ -93,28 +116,34 @@
             return this;
         },
 
-        pause: function() {
-            
+        pause : function() {
             clearInterval(this.interval);
-            this.interval = null;
+            this.cycling = false;
 
             return this;
         },
 
-        slideTo: function($slide) {                
-            this.pause();
-
-            $slide.stop(true).fadeTo(this.options.speed, 1, $.proxy(function(){
-
-                this.cycling && this.play();
-
-            }, this));
-
-            $slide.siblings(this.options.slideSelector).removeClass('active').stop(true).fadeTo(this.options.speed, 0);
-
+        slideTo : function($slide) {
+            clearInterval(this.interval);
+            
+            var $siblings = $slide.siblings(this.options.slideSelector);
+            
+            $siblings.removeClass('active');
             $slide.addClass('active');
-
             this.$current = $slide;
+
+            if (this.csstransitions) {
+                $slide.one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", $.proxy(function(event) {
+                    this.cycling && this.play();
+                }, this));
+                $siblings.css('opacity', 0);
+                $slide.css('opacity', 1);
+            } else {
+                $slide.stop(true).fadeTo(this.options.speed, 1, $.proxy(function(){
+                    this.cycling && this.play();
+                }, this));
+                $siblings.stop(true).fadeTo(this.options.speed, 0);
+            }
             
             if (this.options.pager) {
                 var index = this.$slides.index($slide);
@@ -126,7 +155,7 @@
             return this;                
         },
 
-        next: function () {
+        next : function () {
             var $next;
 
             if (this.$current.next(this.options.slideSelector).length) {
@@ -138,7 +167,7 @@
             return this.slideTo($next);
         },
 
-        prev: function () {                
+        prev : function () {
             var $prev;
 
             if (this.$current.prev(this.options.slideSelector).length) {
@@ -168,6 +197,7 @@
         this.each(function(){
             var slideshow = new Slideshow(this, options);
             $(this).data('slideshow', slideshow);
+            console.log(slideshow.csstransitions);
         });
         
         return this;
