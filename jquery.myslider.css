@@ -49,7 +49,7 @@ you shouldn't need to change anything below */
     display: none;
 }
 
-.csstransitions .slide + .slide {
+.csstransitions .slideshow .slide + .slide {
     opacity: 0;
     display: block;
 }
