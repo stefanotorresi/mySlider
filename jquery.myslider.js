@@ -65,6 +65,7 @@
                 }
             } else {
                 this.$buttons.show();
+                this.$buttons.css('opacity', 1);
             }
         }
 
@@ -108,7 +109,7 @@
 
         play : function () {
             clearInterval(this.interval);
-            
+
             this.cycling = true;
 
             this.interval = setInterval($.proxy(function() {
