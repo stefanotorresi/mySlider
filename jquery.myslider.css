@@ -49,6 +49,11 @@ you shouldn't need to change anything below */
     display: none;
 }
 
+/* fix chrome 1px shift bug */
+.csstransitions .slideshow {
+    -webkit-backface-visibility: hidden;
+}
+
 .csstransitions .slideshow .slide + .slide {
     opacity: 0;
     display: block;
