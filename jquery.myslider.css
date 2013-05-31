@@ -6,28 +6,7 @@
  * ************************************************
  */
 
-/* sensible settings */
-
-/* WIDTH */
-.slideshow .slide img {
-    width: 2000px;
-    margin-left: -1000px;  /* minus half width , needed to center the image */
-}
-
-/* HEIGHT */
-.slideshow-container,
-.slideshow,
-.slideshow .slide,
-.slideshow .slide img {
-    height: 670px;
-}
-
-
-/* *******************************
-you shouldn't need to change anything below */
-
 .slideshow-container {
-    overflow: hidden;
     position: relative;
     z-index: 0;
     display: block;
@@ -35,22 +14,40 @@ you shouldn't need to change anything below */
 
 .slideshow {
     z-index: -1;
+    position: relative;
+    top: 0;
 }
 
 .slideshow,
 .slideshow .slide {
-    position: absolute;
-    top: 0;
     width: 100%;
     display: block;
 }
 
 .slideshow .slide {
     margin: 0;
+    position: relative;
 }
 
 .slideshow .slide + .slide {
     display: none;
+    position: absolute;
+    top: 0;
+}
+
+.slideshow .slide img {
+    position: relative;
+    display: block;
+    left: 50%;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    margin-left: -50%;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
 }
 
 /* fix chrome 1px shift bug */
@@ -61,15 +58,6 @@ you shouldn't need to change anything below */
 .csstransitions .slideshow .slide + .slide {
     opacity: 0;
     display: block;
-}
-
-.slideshow .slide img {
-    position: absolute;
-    left: 50%;
-    right: 0;
-    display: block;
-    top: 0;
-    max-width: none;
 }
 
 .slideshow .buttons {
@@ -112,6 +100,7 @@ you shouldn't need to change anything below */
     bottom: 0;
     width: 100%;
     z-index: 1;
+    margin: 1% 0;
 }
 
 .slideshow .pager a {

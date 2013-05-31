@@ -4,7 +4,7 @@ mySlider
 Description
 ---
 
-**mySlider** is yet another jQuery slideshow plugin, designed to slide through absolutely positioned widescreen background images inside a fixed height HTML block.
+**mySlider** is yet another jQuery slideshow plugin, initially designed to slide through absolutely positioned widescreen background images inside a fixed height HTML block, and then readapted to also fit responsive layouts.
 
 Requirements
 ---
@@ -22,9 +22,6 @@ Usage
 
 ```html
 <div class="slideshow-container">
-	
-	<!-- your content here -->
-
 	<div class="slideshow">
 		<div class="slide">
 			<img src="slide1.jpg" alt="">
@@ -39,7 +36,7 @@ Usage
 </div>
 ```
 
-Note: you can use pretty much any tag instead of `<div>`
+Note: you should be able to use any tag instead of `<div>` but it depends on your reset styles
 
 ### Javascript
 
@@ -65,29 +62,13 @@ They are quite self explanatory:
 }
 ```
 
-### CSS
+### Using the slideshow as a background
 
-To prevent FOUC and grant graceful degradation just set your image size using these three rules somewhere in your css. Here is an example for 2000x670 images:
-
-```css
-/* WIDTH */
-.slideshow .slide img {
-    width: 2000px;
-    margin-left: -1000px;  /* minus half width , needed to center the image */
-}
-
-/* HEIGHT */
-.slideshow-container, 
-.slideshow,
-.slideshow .slide,
-.slideshow .slide img {
-    height: 670px;
-}
-```
+You can append/prepend any content inside the `slideshow-container` element and absolutely position it to make the `slideshow` block behave as an animated background.
 
 ### Examples
 
-   http://www.fudcatania.it
+   TO-DO
 
 Copyright and license
 --
