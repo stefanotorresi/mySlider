@@ -68,7 +68,7 @@ You can append/prepend any content inside the `slideshow-container` element and 
 
 ### Examples
 
-   TO-DO
+   http://jsfiddle.net/bUUmX/ 
 
 Copyright and license
 --
