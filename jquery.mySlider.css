@@ -29,6 +29,10 @@
     position: relative;
 }
 
+.slideshow .slide.active {
+    z-index: 1
+}
+
 .slideshow .slide + .slide {
     display: none;
     position: absolute;
