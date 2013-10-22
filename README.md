@@ -16,7 +16,7 @@ Usage
 
 ### HTML
 
-1. Add `slideshow-container` class to the block you want to add the background to.
+1. Add `slideshow-container` class to the block you want to add the slideshow to.
 2. Append a child with `slideshow` class to the block.
 3. Put your slides blocks ( default class is `slide` ) inside the `slideshow` block;
 
@@ -36,7 +36,7 @@ Usage
 </div>
 ```
 
-Note: you should be able to use any tag instead of `<div>` but it depends on your reset styles
+*Note: you should be able to use any tag instead of `<div>` but it depends on your reset styles*
 
 ### Javascript
 

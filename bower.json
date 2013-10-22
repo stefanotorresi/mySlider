@@ -1,0 +1,30 @@
+{
+  "name": "mySlider",
+  "version": "0.3.0",
+  "homepage": "https://github.com/stefanotorresi/mySlider",
+  "authors": [
+    "Stefano Torresi <webdev@stefanotorresi.it>"
+  ],
+  "description": "yet another jQuery slideshow plugin",
+  "main": [
+    "jquery.mySlider.js",
+    "jquery.mySlider.css"
+  ],
+  "keywords": [
+    "jquery",
+    "slider",
+    "slideshow",
+    "plugin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.8.3"
+  }
+}
