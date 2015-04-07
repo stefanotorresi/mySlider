@@ -13,6 +13,7 @@
         this.options = options;
         this.$slides = this.$container.children(options.slideSelector);
         this.$current = this.$slides.first();
+        this.$current.addClass('active');
 
         if (options.autoStart) {
             this.play();

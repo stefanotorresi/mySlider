@@ -49,6 +49,10 @@ you shouldn't need to change anything below */
     margin: 0;
 }
 
+.slideshow .slide.active {
+    z-index: 1;
+}
+
 .slideshow .slide + .slide {
     display: none;
 }
